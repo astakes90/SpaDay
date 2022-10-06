@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<div id="clientProfile">
+﻿<div id="clientProfile">
 </div>
 <div id="servicesMenu">
 </div>
@@ -13,14 +8,42 @@
 </div>
 <div id="servicesMenu">
 
+    <h3 id="clientProfile">Client Profile</h3>
+    <p>@ViewBag.name</p>
+
     <h5>Facial Treatments</h5>
-    <p>Your //TODO: pass the skintype value in here// skin type is best suited to the follow facial types:</p>
-    
+    <p>Your @ViewBag.skinType skin type is best suited to the following facial types:</p>
+
     <ul>
-        //TODO: iterate through appropriate facial treatments
+        @foreach (var facial in ViewBag.appropriateFacialsBag)
+        {
+            <li>@facial</li>
+
+        }
     </ul>
 
     <h5>Nail Services</h5>
-    // TODO: display a description for the nail service selected
-    
+    @if (ViewBag.maniPedi == "manicure")
+    {
+        <p>Our manicure is a great way to spend 30 minutes of your day! We use shea butter hand cream and the finest gel polish.</p>
+    }
+    else if (ViewBag.maniPedi == "pedicure")
+    {
+        <p>Relax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!</p>
+    }
+    else
+    {
+        <p> Our manicure is a great way to spend 30 minutes of your day!We use shea butter hand cream and the finest gel polish.</p>
+        <p>Relax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!</p>
+    }
+
 </div>
+
+@{List<string> nailPolishes = new List<string> { "#DA0066", "#00CDDA", "#2134F2", "#EB832C" };}
+
+@foreach (var color in nailPolishes)
+{
+    <div class="nailpolish" style="background-color:@color">
+
+    </div>
+}
