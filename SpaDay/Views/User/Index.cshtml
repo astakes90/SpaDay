@@ -1,0 +1,9 @@
+﻿@using SpaDay.Models;
+@using SpaDay.Data;
+
+<h1>Hello @UserData.Get(0).Username</h1>
+<a asp-controller="Spa" asp-action="Menu">Pick out spa treatments!</a>
+<div>
+    <p>User email: @UserData.Get(0).Email</p>
+    <p>Date joined: @UserData.Get(0).DateOfRegistration</p>
+</div>
